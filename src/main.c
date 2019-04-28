@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 12:10:49 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/23 12:32:37 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/04/28 04:10:38 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,32 @@
 
 int		main(int ac, char **av)
 {
+	int		fd;
+
+	if (ac != 2)
+	{
+		ft_putstr("usage: ./fillit input_file\n");
+		return (1);
+	}
+	fd = open(av[1], O_RDONLY);
+	ft_main(fd);
+	return (0);
+}
+
+void	ft_main(int fd)
+{
 	t_map	*map;
 	t_list	*start;
-	int		fd;
 	int		size;
 	int		count;
 
 	count = 0;
 	start = NULL;
-	if (ac != 2)
-	{
-		ft_putstr("error\n");
-		return (0);
-	}
-	fd = open(av[1], O_RDONLY);
 	if (read_file(fd, &count, &start) != 1)
 	{
 		ft_putstr("error\n");
 		free_lst(&start);
-		exit(1);
+		return ;
 	}
 	size = sqrt_top(count * 4);
 	map = new_map(size);
@@ -45,5 +52,4 @@ int		main(int ac, char **av)
 	free_lst(&start);
 	free_map(&map);
 	close(fd);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 11:27:41 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/23 12:19:50 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/04/28 02:01:09 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		check_capacity(t_map *map, t_tetris *tetr, int p, int q)
 	return (1);
 }
 
-void	change_map(t_map *map, t_tetris *tetr, int p, int q, char c)
+void	change_map(t_map *map, t_tetris *tetr, t_point coordinations, char c)
 {
 	int i;
 	int j;
@@ -57,7 +57,7 @@ void	change_map(t_map *map, t_tetris *tetr, int p, int q, char c)
 		while (j < tetr->width)
 		{
 			if (tetr->pos[i][j] == '#')
-				(map->array)[p + i][q + j] = c;
+				(map->array)[coordinations.x + i][coordinations.y + j] = c;
 			j++;
 		}
 		i++;

@@ -6,13 +6,13 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 11:27:43 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/23 12:27:56 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/04/28 03:22:30 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-int		link_count(char buff[], int i)
+int		link_count(char buff[], int i, int *count)
 {
 	int link;
 
@@ -25,30 +25,28 @@ int		link_count(char buff[], int i)
 		link++;
 	if (i / 5 != 3 && buff[i + 5] == '#')
 		link++;
+	(*count)++;
 	return (link);
 }
 
 int		check_tetr(int fd, char **str)
 {
-	char	buff[20];
+	char	buff[21];
 	int		count;
 	int		link;
 	int		i;
 
-	if (((count = read(fd, buff, 19)) == 0) || count < 19 || buff[4] != '\n'
-		|| buff[9] != '\n' || buff[14] != '\n')
+	if (read(fd, buff, 20) < 20 || buff[4] != '\n' || buff[9] != '\n'
+		|| buff[14] != '\n' || buff[19] != '\n')
 		return (0);
-	buff[19] = '\0';
+	buff[20] = '\0';
 	i = -1;
 	count = 0;
 	link = 0;
-	while (++i < 19)
+	while (++i < 20)
 	{
 		if (buff[i] == '#' && i % 5 != 4)
-		{
-			count++;
-			link = link + link_count(buff, i);
-		}
+			link = link + link_count(buff, i, &count);
 		else if ((buff[i] != '.' && i % 5 != 4) || count > 4)
 			return (0);
 	}
@@ -93,17 +91,12 @@ int		read_file(int fd, int *count_elem_in_list, t_list **start)
 	str = NULL;
 	if (fd < 0 || !start)
 		return (-1);
-	while ((res = check_tetr(fd, &str)) == 1)
+	while (check_tetr(fd, &str))
 	{
 		(*count_elem_in_list)++;
 		tetra = get_piece(str, value++);
 		ft_begin_lstadd(start, tetra);
 		ft_memdel((void **)&str);
-		res = read(fd, &c, 1);
-		if ((res == 1 && c != '\n') || res < 0)
-			return (-1);
-		else if (res == 0)
-			return (1);
 		res = read(fd, &c, 1);
 		if ((res == 1 && c != '\n') || res < 0)
 			return (-1);

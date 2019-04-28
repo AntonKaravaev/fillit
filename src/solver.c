@@ -6,7 +6,7 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 12:16:19 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/23 12:18:36 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/04/28 03:25:41 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 int		solve(t_map *map, t_list *list)
 {
-	int			i;
-	int			j;
+	t_point		cor;
 	t_tetris	*tetr;
 
 	if (list == NULL)
 		return (1);
 	tetr = list->content;
-	i = 0;
-	while (i + tetr->height <= map->size)
+	cor.x = -1;
+	while (++cor.x + tetr->height <= map->size)
 	{
-		j = 0;
-		while (j + tetr->width <= map->size)
+		cor.y = -1;
+		while (++cor.y + tetr->width <= map->size)
 		{
-			if (check_capacity(map, tetr, i, j) == 1)
+			if (check_capacity(map, tetr, cor.x, cor.y) == 1)
 			{
-				change_map(map, tetr, i, j, tetr->value);
+				change_map(map, tetr, cor, tetr->value);
 				if (!(solve(map, list->next) == 0))
 					return (1);
-				change_map(map, tetr, i, j, '.');
+				change_map(map, tetr, cor, '.');
 			}
-			j++;
 		}
-		i++;
 	}
 	return (0);
 }
