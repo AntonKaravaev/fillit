@@ -6,15 +6,14 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 11:27:23 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/28 04:09:17 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:54:56 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "../libft/includes/libft.h"
-# include <stdio.h>
+# include "libft.h"
 # include <unistd.h>
 # include <strings.h>
 # include <sys/types.h>

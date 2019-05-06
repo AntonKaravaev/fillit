@@ -6,11 +6,11 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 11:27:41 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/28 02:01:09 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:54:22 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 void	print_map(t_map *map)
 {

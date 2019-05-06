@@ -6,7 +6,7 @@
 #    By: bharmund <bharmund@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/28 16:28:57 by bharmund          #+#    #+#              #
-#    Updated: 2019/04/15 12:02:30 by crenly-b         ###   ########.fr        #
+#    Updated: 2019/05/06 12:35:51 by crenly-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,13 +71,11 @@ SOURCE = 	ft_memset.c \
 					ft_lstmap.c
 
 OBJECTS = $(SOURCE:.c=.o)
-SRCDIR = srcs
-SRC = $(addprefix $(SRCDIR)/, $(SOURCE))
-HEADER = -I includes
+HEADER = libft.h
 NAME = libft.a
 all: $(NAME)
 $(NAME):
-	$(CC) $(SRC) $(HEADER)
+	$(CC) $(SOURCE) -I$(HEADER)
 	ar src libft.a $(OBJECTS)
 clean:
 	/bin/rm -f $(OBJECTS)

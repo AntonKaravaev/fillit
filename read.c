@@ -6,11 +6,11 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 11:27:43 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/28 03:22:30 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:54:20 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 int		link_count(char buff[], int i, int *count)
 {
@@ -93,7 +93,8 @@ int		read_file(int fd, int *count_elem_in_list, t_list **start)
 		return (-1);
 	while (check_tetr(fd, &str))
 	{
-		(*count_elem_in_list)++;
+		if ((*count_elem_in_list)++ > 26)
+			return (-1);
 		tetra = get_piece(str, value++);
 		ft_begin_lstadd(start, tetra);
 		ft_memdel((void **)&str);

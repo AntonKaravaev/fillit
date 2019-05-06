@@ -6,11 +6,11 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 11:27:39 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/23 11:52:38 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:54:34 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 void		ft_findminmax(char *str, t_point *min, t_point *max)
 {
@@ -67,7 +67,7 @@ t_tetris	*get_piece(char *str, char value)
 	min = point_new(3, 3);
 	max = point_new(0, 0);
 	ft_findminmax(str, min, max);
-	pos = ft_memalloc(sizeof(char**) * (max->y - min->y) + 1);
+	pos = ft_memalloc(sizeof(char**) * ((max->y - min->y) + 1));
 	i = 0;
 	while (i < max->y - min->y + 1)
 	{

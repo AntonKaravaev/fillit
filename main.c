@@ -6,11 +6,11 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 12:10:49 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/28 04:10:38 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:54:23 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 int		main(int ac, char **av)
 {

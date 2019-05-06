@@ -1,6 +1,6 @@
 NAME = fillit
 
-SRCS = src/*.c
+SRCS = *.c
 
 OBJ = *.o
 
@@ -12,7 +12,7 @@ all: $(NAME)
 
 $(NAME) :
 	@make -C libft
-	@gcc $(FLAGS) -I $(INC) -c $(SRCS)
+	@gcc $(FLAGS) -c $(SRCS) -I ./libft
 	@gcc $(OBJ) -L libft/ -lft -o $(NAME)
 
 clean:

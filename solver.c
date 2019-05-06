@@ -6,11 +6,11 @@
 /*   By: crenly-b <crenly-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/23 12:16:19 by crenly-b          #+#    #+#             */
-/*   Updated: 2019/04/28 03:25:41 by crenly-b         ###   ########.fr       */
+/*   Updated: 2019/05/06 12:54:19 by crenly-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#include "fillit.h"
 
 int		solve(t_map *map, t_list *list)
 {
